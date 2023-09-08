@@ -1,0 +1,15 @@
+services:
+  python:
+    build:
+      context: .
+      dockerfile: Dockerfile_Python
+    restart: "always"
+    ports:
+      - "8000:8000"
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile_React
+    restart: "always"
+    ports:
+      - "3000:3000"
