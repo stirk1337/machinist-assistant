@@ -1,8 +1,9 @@
 import os
 import uuid
 
+from model.model import assistant_model
+
 from fastapi import APIRouter, UploadFile, File
-from model.model import assistant_model, converter
 
 router = APIRouter(
     prefix='/assistant',
@@ -17,7 +18,10 @@ async def get_voice_answer(file: UploadFile = File(...)):
     file_path = os.path.join('model/mp3', filename)
     with open(file_path, "wb") as f:
         f.write(file.file.read())
-    return assistant_model.automated_speech_recognition(filename)
+    text = assistant_model.automated_speech_recognition(filename)
+    solutions = assistant_model.give_solution(text)
+    return {'failure': text,
+            'solutions': solutions}
 
 
 @router.get('/problem')
