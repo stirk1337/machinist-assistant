@@ -18,6 +18,7 @@ root@stirk1337:~$ docker-compose up
 
 ## Запуск без docker-compose
 
+Установите Python с официального сайта https://www.python.org/
 
 
 
