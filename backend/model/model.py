@@ -1,6 +1,6 @@
-import whisper
 import pandas as pd
 import sentence_transformers
+import nemo.collections.asr as nemo_asr
 
 
 class Model:
@@ -28,7 +28,8 @@ class Model:
     """
 
     def __init__(self, dataset_path: str):
-        self.stt_model = whisper.load_model('base')
+        self.stt_model = nemo_asr.models.EncDecRNNTBPEModel.from_pretrained(
+            "nvidia/stt_ru_fastconformer_hybrid_large_pc")
         self.main_model = sentence_transformers.SentenceTransformer('inkoziev/sbert_synonymy')
         self.dataset = pd.read_csv(dataset_path, sep=';')
 
@@ -84,8 +85,8 @@ class Model:
         Returns:
             str: The transcribed text from the audio.
         """
-        result = self.stt_model.transcribe(f'model/mp3/{path}')
-        return result['text']
+        result1 = self.stt_model.transcribe([f'model/mp3/{path}'])
+        return result1[0][0]
 
 
 # Create an instance of the Model class with a dataset
