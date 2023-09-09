@@ -20,5 +20,6 @@ root@stirk1337:~$ docker-compose up
 
 Установите Python с официального сайта https://www.python.org/
 
+Установите node.js с официального сайта https://nodejs.org/ru
 
 
