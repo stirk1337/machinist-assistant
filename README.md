@@ -7,6 +7,8 @@
 
 Модель: https://github.com/stirk1337/machinist-assistant/blob/main/backend/model/model.py
 
+Датасет: https://github.com/stirk1337/machinist-assistant/blob/main/backend/model/dataset.csv
+
 ## Запуск с docker-compose
 
 Установите Docker (инструкция не прилагается)
