@@ -8,10 +8,7 @@ app = FastAPI()
 
 app.include_router(assistant_router)
 
-origins = [
-    "http://localhost:8000",
-    "http://localhost",
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
