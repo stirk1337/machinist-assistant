@@ -20,6 +20,8 @@
 
 Датасет: https://github.com/stirk1337/machinist-assistant/blob/main/backend/model/dataset.csv
 
+Google Colab: https://colab.research.google.com/drive/11fck5yZp4M7uFhupY1ae9o-7BM4rNM-z?authuser=0#scrollTo=yw9O8boKUxWH
+
 ## Запуск с docker-compose
 
 Установите Docker (инструкция не прилагается)
