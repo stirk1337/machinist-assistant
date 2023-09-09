@@ -5,6 +5,8 @@
 
 После запуска вся документация будет доступна на http://localhost:8000/docs
 
+Модель: https://github.com/stirk1337/machinist-assistant/blob/main/backend/model/model.py
+
 ## Запуск с docker-compose
 
 Установите Docker (инструкция не прилагается)
