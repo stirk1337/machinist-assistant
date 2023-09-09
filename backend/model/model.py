@@ -32,7 +32,7 @@ class Model:
         self.main_model = sentence_transformers.SentenceTransformer('inkoziev/sbert_synonymy')
         self.dataset = pd.read_csv(dataset_path, sep=';')
 
-    def get_solution(self, fail: str) -> (str, str):
+    def get_solution(self, fail: tuple[str, float]) -> (str, str):
         """
         Retrieve the reason and solution associated with a specific failure.
 
@@ -42,9 +42,13 @@ class Model:
         Returns:
             Tuple[str, str]: A tuple containing the reason and solution for the specified failure.
         """
-        df = self.dataset[self.dataset['failure'] == fail]
+        df = self.dataset[self.dataset['failure'] == fail[0]]
         for index, row in df.iterrows():
-            return row['reason'], row['solution']
+            return {'id': row['id'],
+                    'accuracy': fail[1],
+                    'fail': fail[0],
+                    'reason': row['reason'],
+                    'solution': row['solution']}
 
     def give_solution(self, question: str) -> list[(str, str)]:
         """
@@ -63,15 +67,15 @@ class Model:
         problems.insert(0, question)
         embeddings = self.main_model.encode(problems)
 
-        threshold = 0.5
+        threshold = 0.65
         most_common = []
         given = embeddings[0]
 
         for i in range(1, len(embeddings)):
             s = sentence_transformers.util.cos_sim(a=given, b=embeddings[i]).item()
             if s > threshold:
-                most_common.append(problems[i])
-
+                most_common.append((problems[i], s))
+        most_common.sort(key=lambda x: x[1], reverse=True)
         return [self.get_solution(x) for x in most_common]
 
     def automated_speech_recognition(self, path: str) -> str:
