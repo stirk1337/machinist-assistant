@@ -1,7 +1,7 @@
 import { Component } from "react";
-import { AudioRecorder } from 'react-audio-voice-recorder';
 import axios from "axios";
 import './App.css';
+import Microphon from "./microphon";
 
 import { ReactMic } from 'react-mic';
  
@@ -13,6 +13,14 @@ export default class Dictaphone extends Component {
       text: ''
     }
     this.stopRecording = this.stopRecording.bind(this)
+    this.startRecording = this.startRecording.bind(this)
+  }
+
+  componentDidUpdate() {
+    if(this.state.text !== ''){
+      this.props.appendMessage(this.state.text)
+      this.setState((state) => ({text: ''}))
+    }
   }
  
   startRecording = () => {
@@ -66,7 +74,6 @@ export default class Dictaphone extends Component {
   render() {
       return (
         <div className="voiceContainer">
-          <p>{this.state.text}</p>
           <ReactMic
             record={this.state.record}
             className="sound-wave"
@@ -75,7 +82,7 @@ export default class Dictaphone extends Component {
             strokeColor="#000000"
             backgroundColor="#FF4081" />
           
-          <img className="record-voice" src="voice-logo.svg" alt="запись" onClick={this.startRecording}></img>
+          <Microphon startRecording={this.startRecording} isRecord={this.state.record}></Microphon>
         </div>
       );
   }
