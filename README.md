@@ -8,6 +8,7 @@
 ```console
 root@stirk1337:~$ docker-compose up
 ```
+Ждём установку docker-контейнера. Можем занять 5-10 минут.
 
 Приложение будет доступно на http://localhost:3000/
 
