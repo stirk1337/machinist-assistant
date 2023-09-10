@@ -13,7 +13,7 @@ export default class ConfidenceBlock extends Component {
                         console.log(this.props.handleConfidence)
                             return (
                                 <div key={index} onClick={this.props.handleConfidence}>
-                                    <p>{message.reason}</p>
+                                    <p>{message.fail}</p>
                                 </div>
                             );
                     })}

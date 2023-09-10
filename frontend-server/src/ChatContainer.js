@@ -75,13 +75,14 @@ export default class ChatContainer extends Component {
     handleConfidence = (e) => {
         const possibleProblem = e.target.innerText
         this.state.confidenceMessages.forEach(element => {
-            if(element.reason === possibleProblem){
+            if(element.fail === possibleProblem){
                 const BotMessage = {
                     id: this.state.messages.length + 1,
                     docId: element.id,
-                    solution: element.solution
+                    solution: element.solution,
+                    reason: element.reason
                 }
-                xSpeech.speak(`Пункт ${element.id} из Перечня действий. <br></br><br></br> ${element.solution}`)
+                xSpeech.speak(`Пункт ${element.id} из Перечня действий. <br></br><br></br> Причина неисправности: ${element.reason} <br></br><br></br> Решение: ${element.solution}`)
                 this.state.messages.push(BotMessage)
                 console.log(this.state.messages)
             }
