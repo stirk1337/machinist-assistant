@@ -1,5 +1,6 @@
 import os
 import uuid
+import subprocess
 
 from model.model import assistant_model
 
@@ -18,7 +19,15 @@ async def get_voice_answer(file: UploadFile = File(...)):
     file_path = os.path.join('model/mp3', filename)
     with open(file_path, "wb") as f:
         f.write(file.file.read())
-    text = assistant_model.automated_speech_recognition(filename)
+    command = [
+        'ffmpeg',
+        '-i', f'model/mp3/{filename}',
+        '-ac', '1',
+        f'model/mp3/{filename}.mp3',
+        '-y'
+    ]
+    subprocess.run(command)
+    text = assistant_model.automated_speech_recognition(filename + '.mp3')
     solutions = assistant_model.give_solution(text)
     return {'failure': text,
             'solutions': solutions}

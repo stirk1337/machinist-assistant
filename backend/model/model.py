@@ -1,6 +1,7 @@
 import pandas as pd
 import sentence_transformers
 import nemo.collections.asr as nemo_asr
+import whisper
 
 
 class Model:
@@ -32,6 +33,7 @@ class Model:
             "nvidia/stt_ru_fastconformer_hybrid_large_pc")
         self.main_model = sentence_transformers.SentenceTransformer('inkoziev/sbert_synonymy')
         self.dataset = pd.read_csv(dataset_path, sep=';')
+        self.whisper = whisper.load_model('base')
 
     def get_solution(self, fail: tuple[str, float]) -> (str, str):
         """
@@ -91,6 +93,9 @@ class Model:
         """
         result1 = self.stt_model.transcribe([f'model/mp3/{path}'])
         return result1[0][0]
+        # result = self.whisper.transcribe(f'model/mp3/{path}')
+
+        # return result['text']
 
 
 # Create an instance of the Model class with a dataset
