@@ -102,8 +102,8 @@ export default class ChatContainer extends Component {
             return (
                 <div>
                     <div className="chat-container">
-                        <ConfidenceBlock confidenceMessages={this.state.confidenceMessages} handleConfidence={this.handleConfidence}></ConfidenceBlock>
                         <ChatBlock chat={this.state.messages}></ChatBlock>
+                        <ConfidenceBlock confidenceMessages={this.state.confidenceMessages} handleConfidence={this.handleConfidence}></ConfidenceBlock>
                     </div>
                     <Dictaphone appendMessage={this.handleMessages}></Dictaphone>
                 </div>

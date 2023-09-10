@@ -51,8 +51,8 @@ export default class Dictaphone extends Component {
   onStop = async (recordedBlob) => {
     console.log('recordedBlob is: ', recordedBlob);
     const audioBlob = await fetch(recordedBlob.blobURL).then((r) => r.blob());
-    const audiofile = new File([audioBlob], "audiofile.mpeg", {
-      type: "audio/mpeg",
+    const audiofile = new File([audioBlob], "audiofile.mp3", {
+      type: "audio/mp3",
     });
     var bodyFormData = new FormData();
     bodyFormData.append('file', audiofile); 
@@ -80,7 +80,8 @@ export default class Dictaphone extends Component {
             onStop={this.onStop}
             onData={this.onData}
             strokeColor="#000000"
-            backgroundColor="#FF4081" />
+            backgroundColor="#FF4081"
+            mimeType="audio/mp3" />
           
           <Microphon startRecording={this.startRecording} isRecord={this.state.record}></Microphon>
         </div>

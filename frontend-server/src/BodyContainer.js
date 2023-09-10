@@ -26,8 +26,8 @@ export default class BodyContainer extends Component {
                   </div>  
                   <div className="start-listening" onClick={this.props.startVoice}>
                       <img src="train-cooler.svg" className="train"></img>
-                      <img src="microphon-main.svg" className="micro-main"></img>
                       <h1>Голосовой помощник машиниста</h1>
+                      <img src="microphon-main.svg" className="micro-main"></img>
                   </div>
               </div>
             </div>

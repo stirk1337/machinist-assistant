@@ -163,6 +163,7 @@ canvas{
 }
 
 .confidence-block{
+  order: 0;
   width: 25%;
   max-height: 400px;
   overflow: auto;
@@ -178,6 +179,7 @@ canvas{
 }
 
 .chat-block{
+  order: 1;
   width: 75%;
   height: 400px;
   overflow: auto;
@@ -220,5 +222,92 @@ canvas{
 
 .record-voice{
   cursor: pointer;
+  width:185px;
+  height:185px;
+}
+
+@media (max-width: 1750px) {
+  .chat-block, .confidence-block{
+    box-sizing: border-box;
+    height: 350px;
+  }
+}
+
+@media (max-width: 1550px) {
+  .record-voice{
+    width:110px;
+    height:110px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .logo{
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5%;
+    width: 128px;
+    height: 57px;
+  }
+  .medium{
+    font-size: 17px;
+  }
+  h1{
+    font-size: 25px;
+  }
+  .li-models{
+    width: 100%;
+    margin-bottom: 80px;
+  }
+  .li-models ul{
+    max-height: 100px;
+  }
+  .body-container-top{
+    display: inline;
+  }
+  .gear-icon{
+    width: 62px;
+    height: 63px;
+  }
+  .train{
+    top: -20% !important;
+    left: 0 !important;
+    width: 103px;
+    height: 117px;
+  }
+  .start-listening{
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 100px;
+  }
+  .start-listening h1{
+    margin-bottom: 10px;
+  }
+  .micro-main{
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    display: block;
+    margin: 0 auto;
+    width: 160px;
+    height: 160px;
+  }
+  .confidence-block{
+    width: 100%;
+    height: 160px;
+    margin-bottom: 10px;
+  }
+  .chat-container{
+    display: inline;
+  }
+  .chat-block{
+    width: 100% !important;
+    height: 300px;
+    display: block;
+    margin-bottom: 10px;
+  }
+  .chat-block div{
+    width: 100%;
+  }
+
 }
 
