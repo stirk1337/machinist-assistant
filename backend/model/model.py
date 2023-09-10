@@ -44,6 +44,7 @@ class Model:
             Tuple[str, str]: A tuple containing the reason and solution for the specified failure.
         """
         df = self.dataset[self.dataset['failure'] == fail[0]]
+
         for index, row in df.iterrows():
             return {'id': row['id'],
                     'accuracy': fail[1],

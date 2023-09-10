@@ -47,7 +47,7 @@ export default class ChatContainer extends Component {
                 docId: solution.id,
                 solution: solution.solution
             }
-            xSpeech.speak(`Пункт ${solution.id} из Перечня действий. <br></br><br></br> ${solution.solution}`)
+            xSpeech.speak(`Пункт ${solution.id} из Перечня действий. ${solution.solution}`)
             this.state.messages.push(BotMessage)
             console.log(this.state.messages)
         }
@@ -82,7 +82,7 @@ export default class ChatContainer extends Component {
                     solution: element.solution,
                     reason: element.reason
                 }
-                xSpeech.speak(`Пункт ${element.id} из Перечня действий. <br></br><br></br> Причина неисправности: ${element.reason} <br></br><br></br> Решение: ${element.solution}`)
+                xSpeech.speak(`Пункт ${element.id} из Перечня действий. Причина неисправности: ${element.reason} Решение: ${element.solution}`)
                 this.state.messages.push(BotMessage)
                 console.log(this.state.messages)
             }
